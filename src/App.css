@@ -1,0 +1,51 @@
+.txt{
+    width: 30%;
+    height: 40px;
+    border:none;
+    border-radius: 2rem;
+}
+.search{
+    width:100px;
+    border-radius: 2rem;
+    font-weight: bold;
+}
+.res{
+    border-radius: 5rem;
+}
+.postOff{
+    width: 30%;
+    margin: auto;
+    border-radius: 2rem;
+}
+@media screen and (max-width:1050px) {
+    .postOff{
+        width: 80%;
+    }
+}
+@media screen and (max-width:800px) {
+    .txt{
+        width: 50%;
+    }
+}
+@media screen and (max-width:450px) {
+    .txt{
+        width: 80%;
+    }
+    .res{
+        border-radius: 0px;
+    }
+    .postOff{
+        width: 80%;
+    }
+}
+@media screen and (max-width:350px) {
+    .txt{
+        width: 80%;
+    }
+    .res{
+        border-radius: 0px;
+    }
+    .postOff{
+        width: 100%;
+    }
+}
