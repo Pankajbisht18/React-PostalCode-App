@@ -16,7 +16,12 @@ class App extends Component {
       })
       .catch((error)=> {
           console.log("Not okay : ",error);
-      })
+      })    
+  }
+  handlePress = (evt) => {
+    if(evt.charCode === 13){
+      this.handleClick();
+    }
   }
   render() {
     let output = null;
@@ -30,16 +35,19 @@ class App extends Component {
     }
     else{
       output = (
-        <div className="container shadow-lg res">
+        <div className="container res">
           <h3 className="text-center">{this.state.msg}</h3>
-          {this.state.code.map((pin,i)=> {
-            return(
-              <div key={i} className="postOff text-center mt-2 shadow-lg">
-                <p className="fw-bold">Name: {pin.Name}</p>   
-                <p className="fw-bold">Distric: {pin.District}</p>  
-              </div> 
-            )
-          })}
+          <div className="d-flex flex-wrap">
+            {this.state.code.map((pin,i)=> {
+              return(
+                <div key={i} className="postOff text-center">
+                  <p className="fw-bold">Name: {pin.Name}</p>   
+                  <p className="fw-bold">Distric: {pin.District}</p>  
+                  <p className="fw-bold">Delivery Status: {pin.DeliveryStatus}</p>
+                </div> 
+              )
+            })}
+          </div>
         </div>
       )
     }
@@ -48,19 +56,20 @@ class App extends Component {
         <div>
           <div className="container mt-5">
             <h1 className="text-center">Search Post Office...</h1>
-            <input
-              type="text" 
-              value={this.state.pincode} 
-              placeholder="Enter Your Pincode"
-              className="mx-auto d-block txt ps-3 mt-4 shadow-lg bg-body"
-              onChange={this.handleChange} 
-            />
-            <input 
-              type="button" 
-              value="Search" 
-              className="mx-auto d-block my-3 btn btn-primary shadow search"
-              onClick={this.handleClick} 
-            /> 
+              <input
+                type="text" 
+                value={this.state.pincode} 
+                placeholder="Enter Your Pincode"
+                className="mx-auto d-block txt ps-3 mt-4 shadow-lg bg-body"
+                onChange={this.handleChange} 
+                onKeyPress={this.handlePress}
+              />
+              <input 
+                type="button" 
+                value="Search" 
+                className="mx-auto d-block my-3 btn btn-primary shadow search"
+                onClick={this.handleClick} 
+              />
           </div>         
             {output}
         </div>
